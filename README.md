@@ -15,3 +15,10 @@ https://api.themoviedb.org/3/movie/550?api_key=db0b3d5274db83389840b9666d851ad0
 
 Endpoints:
 /movie/popular and /movie/top_rated
+
+Paging:
+https://developer.android.com/topic/libraries/architecture/paging/
+
+
+TODO:
+Add note about API key not in repo

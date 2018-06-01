@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 
 class MovieGlobals extends Application {
 
+    public static String SORT;
+
     private static String KEY;
 
 

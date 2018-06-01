@@ -1,16 +1,39 @@
 package com.mickeywilliamson.mickey.popularmovies;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
-public class Movie {
+public class Movie implements Parcelable {
+
     private String title;
     private String image;
     private String plot;
-    private int rating;
-    private Date releaseDate;
+    private String rating;
+    private String releaseDate;
 
+    protected Movie() {}
 
-    public void Movie() {}
+    protected Movie(Parcel in) {
+        this.title = in.readString();
+        this.image = in.readString();
+        this.plot = in.readString();
+        this.rating = in.readString();
+        this.releaseDate = in.readString();
+    }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 
     public void setTitle(String title) {
         this.title = title;
@@ -36,16 +59,34 @@ public class Movie {
         return plot;
     }
 
-    public void setRating(int rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public int getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setReleaseDate(Date date) {
+    public void setReleaseDate(String date) {
         this.releaseDate = date;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(image);
+        dest.writeString(plot);
+        dest.writeString(rating);
+        dest.writeString(releaseDate);
     }
 }
 
