@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 /**
  * Class used to persist data.
  */
-public class MovieGlobals extends Application {
+class MovieGlobals extends Application {
 
     public static String SORT;
 

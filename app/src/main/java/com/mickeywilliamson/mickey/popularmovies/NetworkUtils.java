@@ -5,7 +5,6 @@ package com.mickeywilliamson.mickey.popularmovies;
 
 import android.content.Context;
 import android.net.Uri;
-import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,22 +16,11 @@ import java.util.Scanner;
 /**
  * These utilities will be used to communicate with the network.
  */
-public class NetworkUtils {
+class NetworkUtils {
 
-    final static String BASE_URL = "http://api.themoviedb.org/3/movie/";
+    private final static String BASE_URL = "http://api.themoviedb.org/3/movie/";
 
-    final static String PARAM_API_KEY = "api_key";
-
-    /*
-     * The sort field. One of stars, forks, or updated.
-     * Default: results are sorted by best match if no field is specified.
-     */
-    final static String PARAM_SORT_POPULAR = "popular";
-    final static String PARAM_SORT_TOP_RATED = "top_rated";
-
-    private static void getKey(Context context) {
-        MovieGlobals globals = new MovieGlobals();
-    }
+    private final static String PARAM_API_KEY = "api_key";
 
     /**
      * Builds the URL used to query Github.

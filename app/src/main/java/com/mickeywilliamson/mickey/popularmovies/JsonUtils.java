@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Utility class for parsing the JSON response from the Movie API.
  */
-public final class JsonUtils {
+final class JsonUtils {
 
     public static ArrayList<Movie> parseMoviesFromJSON(String moviesJsonString) throws JSONException {
 
@@ -21,7 +21,7 @@ public final class JsonUtils {
         final String FIELD_RELEASE_DATE = "release_date";
 
         // The parsed movies will be stored in an ArrayList.
-        ArrayList<Movie> movies = new ArrayList<Movie>();
+        ArrayList<Movie> movies = new ArrayList<>();
 
         // Create a JSON object from the JSON string returned by the API.
         JSONObject moviesJson = new JSONObject(moviesJsonString);

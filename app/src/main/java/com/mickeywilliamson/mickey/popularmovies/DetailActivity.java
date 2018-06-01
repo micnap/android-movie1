@@ -13,11 +13,11 @@ import com.squareup.picasso.Picasso;
  */
 public class DetailActivity extends AppCompatActivity {
 
-    TextView mTitle;
-    ImageView mImage;
-    TextView mPlot;
-    TextView mRating;
-    TextView mReleaseDate;
+    private TextView mTitle;
+    private ImageView mImage;
+    private TextView mPlot;
+    private TextView mRating;
+    private TextView mReleaseDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,8 @@ public class DetailActivity extends AppCompatActivity {
             Picasso.with(this).load(MovieAdapter.getImagePath(movie.getImage(), MovieAdapter.WIDTH_W342)).into(mImage);
             mImage.setContentDescription(movie.getTitle());
             mPlot.setText(movie.getPlot());
-            mRating.setText(movie.getRating() + "/10");
+            String ratingText = getString(R.string.rating, movie.getRating());
+            mRating.setText(ratingText);
             mReleaseDate.setText(MovieAdapter.getYear(movie.getReleaseDate()));
         }
     }

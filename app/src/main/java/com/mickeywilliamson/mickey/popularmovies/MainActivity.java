@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.List
     /**
      * Retrieves the movie data from the appropriate endpoint
      */
-    public class MovieAsyncTask extends AsyncTask<String, Void, ArrayList<Movie>> {
+    class MovieAsyncTask extends AsyncTask<String, Void, ArrayList<Movie>> {
 
         @Override
         protected void onPreExecute() {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.List
         @Override
         protected ArrayList<Movie> doInBackground(String... strings) {
 
-            ArrayList<Movie> movies = null;
+            ArrayList<Movie> movies;
 
             // The string that determines the endpoint from which to get the movie data.
             String sort = strings[0];

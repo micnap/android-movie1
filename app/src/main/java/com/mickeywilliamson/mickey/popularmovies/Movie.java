@@ -16,9 +16,9 @@ public class Movie implements Parcelable {
     private String releaseDate;
 
     // Constructors
-    protected Movie() {}
+    Movie() {}
 
-    protected Movie(Parcel in) {
+    private Movie(Parcel in) {
         this.title = in.readString();
         this.image = in.readString();
         this.plot = in.readString();
