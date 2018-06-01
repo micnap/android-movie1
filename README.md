@@ -10,7 +10,7 @@ https://www.themoviedb.org/settings/api
 Documentation:
 https://developers.themoviedb.org/3/getting-started/introduction
 
-Example API Request:
+Example API Request (example api key - does not work):
 https://api.themoviedb.org/3/movie/550?api_key=db0b3d5274db83389840b9666d851ad0
 
 Endpoints:

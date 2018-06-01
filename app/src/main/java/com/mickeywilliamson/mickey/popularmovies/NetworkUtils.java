@@ -20,7 +20,6 @@ import java.util.Scanner;
 public class NetworkUtils {
 
     final static String BASE_URL = "http://api.themoviedb.org/3/movie/";
-    // http://api.themoviedb.org/3/movie/top_rated?api_key=db0b3d5274db83389840b9666d851ad0
 
     final static String PARAM_API_KEY = "api_key";
 
@@ -37,6 +36,7 @@ public class NetworkUtils {
 
     /**
      * Builds the URL used to query Github.
+     * Example url (api key does not work): http://api.themoviedb.org/3/movie/top_rated?api_key=db0b3d5274db83389840b9666d851ad0
      *
      * @return The URL to use to query the weather server.
      */
