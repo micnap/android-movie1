@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srcCompat="@drawable/default_movie"
+        android:contentDescription="@string/movie_title"
         android:adjustViewBounds="true"/>
 
 </LinearLayout>

@@ -36,6 +36,7 @@ public class DetailActivity extends AppCompatActivity {
             Movie movie = intent.getParcelableExtra("movie");
             mTitle.setText(movie.getTitle());
             Picasso.with(this).load(MovieAdapter.getImagePath(movie.getImage(), MovieAdapter.WIDTH_W342)).into(mImage);
+            mImage.setContentDescription(movie.getTitle());
             mPlot.setText(movie.getPlot());
             mRating.setText(movie.getRating() + "/10");
             mReleaseDate.setText(MovieAdapter.getYear(movie.getReleaseDate()));
