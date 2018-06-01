@@ -24,8 +24,6 @@ public class NetworkUtils {
 
     final static String PARAM_API_KEY = "api_key";
 
-    static String KEY;
-
     /*
      * The sort field. One of stars, forks, or updated.
      * Default: results are sorted by best match if no field is specified.
@@ -35,7 +33,6 @@ public class NetworkUtils {
 
     private static void getKey(Context context) {
         MovieGlobals globals = new MovieGlobals();
-        KEY = globals.getKey(context);
     }
 
     /**
@@ -45,13 +42,9 @@ public class NetworkUtils {
      */
     public static URL buildUrl(Context context, String sort) {
 
-        if (KEY == null) {
-            getKey(context);
-        }
-
         Uri builtUri = Uri.parse(BASE_URL).buildUpon()
                 .appendPath(sort)
-                .appendQueryParameter(PARAM_API_KEY, KEY)
+                .appendQueryParameter(PARAM_API_KEY, MovieGlobals.getKey(context))
                 .build();
 
         URL url = null;

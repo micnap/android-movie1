@@ -3,18 +3,13 @@ package com.mickeywilliamson.mickey.popularmovies;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,11 +20,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
     private ArrayList<Movie> movies;
     private final ListItemClickListener mOnClickListener;
 
+    // Constants used in building endpoint url.
     private static final String IMAGE_BASE_PATH = "http://image.tmdb.org/t/p/";
-
     public static final String SORT_POPULAR = "popular";
     public static final String SORT_TOP_RATED = "top_rated";
 
+    // The choices that the Movie API gives us for image widths.
+    // Only 2 of these are currently in use.
+    public static final String WIDTH_W92 = "w92";
+    public static final String WIDTH_W154 = "w154";
+    public static final String WIDTH_W185 = "w185";
+    public static final String WIDTH_W342 = "w342";
+    public static final String WIDTH_W500 = "w500";
+    public static final String WIDTH_W780 = "w780";
+    public static final String WIDTH_ORIGINAL = "original";
+
+    // Constructor.
     public MovieAdapter(ListItemClickListener listener) {
         mOnClickListener = listener;
     }
@@ -49,9 +55,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
 
         final Movie currentMovie = movies.get(position);
 
-        String image_path = getImagePath(currentMovie.getImage(), "w500");
+        // Create the view's image path and load the image with Picasso.
+        String image_path = getImagePath(currentMovie.getImage(), WIDTH_W500);
         Picasso.with(holder.mImage.getContext()).load(image_path).into(holder.mImage);
-
     }
 
     @Override
@@ -59,10 +65,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         if (movies == null) {
             return 0;
         } else {
-
             return movies.size();
         }
-
     }
 
     public class MovieAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -82,6 +86,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         }
     }
 
+    /**
+     * Updates the movie data.
+     *
+     * @param movieList ArrayList
+     *         List of movie data.
+     */
     public void setMovieData(ArrayList<Movie> movieList) {
         movies = movieList;
         notifyDataSetChanged();
@@ -92,16 +102,29 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
     }
 
     /**
+     * Utility function that builds the path for the image.
      *
-     * @param fileName
+     * @param fileName String
+     *        The image's file name.
      * @param width
-     * // Choices are "w92", "w154", "w185", "w342", "w500", "w780", or "original"
-     * @return
+     *        The width the image should be displayed at.
+     *
+     * @return String
+     *        Returns the absolute path of the image.
      */
     public static String getImagePath(String fileName, String width) {
         return IMAGE_BASE_PATH + width + fileName;
     }
 
+    /**
+     * Utility function for extracting the year from the movie's release date.
+     *
+     * @param dateString String
+     *        The release date of the movie in yyyy-MM-dd form.
+     *
+     * @return String
+     *        The four digit year the movie was release.
+     */
     public static String getYear(String dateString) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -114,6 +137,5 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
             e.printStackTrace();
             return null;
         }
-
     }
 }

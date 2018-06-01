@@ -3,16 +3,19 @@ package com.mickeywilliamson.mickey.popularmovies;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Date;
-
+/**
+ * Movie POJO class.
+ */
 public class Movie implements Parcelable {
 
+    // Movie properties.
     private String title;
     private String image;
     private String plot;
     private String rating;
     private String releaseDate;
 
+    // Constructors
     protected Movie() {}
 
     protected Movie(Parcel in) {
@@ -23,18 +26,7 @@ public class Movie implements Parcelable {
         this.releaseDate = in.readString();
     }
 
-    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
-        @Override
-        public Movie createFromParcel(Parcel in) {
-            return new Movie(in);
-        }
-
-        @Override
-        public Movie[] newArray(int size) {
-            return new Movie[size];
-        }
-    };
-
+    // Setters and getters.
     public void setTitle(String title) {
         this.title = title;
     }
@@ -74,6 +66,19 @@ public class Movie implements Parcelable {
     public String getReleaseDate() {
         return releaseDate;
     }
+
+    // Parcelable implementation.
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 
     @Override
     public int describeContents() {

@@ -8,15 +8,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class MovieGlobals extends Application {
+/**
+ * Class used to persist data.
+ */
+public class MovieGlobals extends Application {
 
     public static String SORT;
 
     private static String KEY;
 
-
-    // From https://stackoverflow.com/questions/9544737/read-file-from-assets
-    public String getKey(Context context) {
+    // Derived from https://stackoverflow.com/questions/9544737/read-file-from-assets
+    public static String getKey(Context context) {
 
         if (KEY != null) {
             return KEY;
@@ -40,5 +42,4 @@ class MovieGlobals extends Application {
         }
         return KEY;
     }
-
 }
