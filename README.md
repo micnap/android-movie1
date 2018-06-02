@@ -1,5 +1,7 @@
+ABOUT THIS APP
 This Android app was created as an assignment for the Udacity-Google Android Development Nanodegree.  It utilizes the themoviedb.org's API to pull in movie data and displays it in two screens - the listing screen and the detail screen.  It allows the user to choose between two movie sorts - popular movies and top rated movies.  
 
+API KEY
 The API key is not included in the app's repository.  The examples used in documentation will not work.  The user should generate a new API key (create an account with themoviedb.org and then visit the account area to generate a key) and save it in a single line in a text file named key.txt in a folder named assets at /app/src/main/assets/key.txt. It should sit alongside the java and res folder. The app will automatically grab the key from the file.   
 
 Project Implementation Guide:
